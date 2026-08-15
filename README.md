@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/matomo-middleman.svg)](https://badge.fury.io/rb/matomo-middleman)
 
 It's an extension for the [Middleman](http://middlemanapp.com/) static site generator
-to use [Matomo](https://matomo.org/) tracking (previously known as [Piwik](https://matomo.org/blog/2018/01/piwik-is-now-matomo/)).
+to use [Matomo](https://matomo.org/) tracking.
 
 
 ## Installation
@@ -12,7 +12,7 @@ Then add the following line to your `Gemfile`:
 
 
 ```ruby
-gem 'matomo-middleman', path: "/home/wm/git/matomo-middleman/"
+gem 'matomo-middleman'
 ```
 
 Run `bundle install`.
@@ -45,21 +45,19 @@ which will expand to
 
 ```erb
 <script type="text/javascript">
-  var _paq = _paq || [];
+  var _paq = window._paq = window._paq || [];
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
   var u=(("https:" == document.location.protocol) ? "https" : "http") + "://<your-domain>/<your-url>/";
-  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setTrackerUrl', u+'matomo.php']);
   _paq.push(['setSiteId', 1]);
   var d=document, g=d.createElement('script'),
   s=d.getElementsByTagName('script')[0];
-  g.type='text/javascript';
-  g.defer=true; g.async=true;
-  g.src=u+'piwik.js';
+  g.async=true;
+  g.src=u+'matomo.js';
   s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><p><img src="https://<your-domain>/<your-url>/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 ```
 
